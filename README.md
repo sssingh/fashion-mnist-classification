@@ -1,12 +1,15 @@
 # Fashion MNIST Classification using Neural Network 
+Classify apparel images in Fashion-MNIST dataset using custom built fully-connected neural network
 
-<img src="assets/fmnist_intro.png" width="500">
+<img src="assets/fmnist_intro.png" width="800" height="400">
 
-### Classify apparel images in Fashion-MNIST dataset
-
+## Features
+⚡Multi Label Image Classification  
+⚡Cutsom Fully Connected NN  
+⚡Fashion MNIST  
+⚡PyTorch
 
 ## Table of Contents
-
 - [Introduction](#introduction) 
 - [Objective](#objective)
 - [Dataset](#dataset)
@@ -14,18 +17,14 @@
 - [Solution Approach](#solution-approach)
 - [How To Use](#how-to-use)
 - [License](#license)
-- [Author Info](#author-info)
-
+- [Get in touch](#get-in-touch)
 
 ## Introduction
 Just like [MNIST digit classification](https://github.com/sssingh/hand-written-digit-classification), the [Fashion-MNIST dataset](https://github.com/zalandoresearch/fashion-mnist) is a popular dataset for classification in the Machine Learning community for building and testing neural networks. MNIST is a pretty trivial dataset to be used with neural networks where one can quickly achieve better than 97% accuracy. Experts recommend ([Ian Goodfellow](https://twitter.com/goodfellow_ian/status/852591106655043584), [François Chollet](https://twitter.com/fchollet/status/852594987527045120)) to move away from MNIST dataset for model benchmarking and validation. Fashion-MNIST is more complex than MNIST, and it's a much better dataset for evaluating models than MNIST.
 
-
----
 ## Objective
 We'll build a neural network using PyTorch. Only `fully-connected` layers will be used. The goal here is to classify ten classes of apparel images in the Fashion-MNIST dataset with as high accuracy as possible by only using fully-connected layers (i.e., without using `Convolution` layers)
 
----
 ## Dataset
 - Dataset consists of 60,000 training images and 10,000 testing images.
 - Every image in the dataset will belong to one of the ten classes...
@@ -59,8 +58,6 @@ We'll build a neural network using PyTorch. Only `fully-connected` layers will b
 [test-images](http://fashion-mnist.s3-website.eu-central-1.amazonaws.com/t10k-images-idx3-ubyte.gz), 
 [test-labels](http://fashion-mnist.s3-website.eu-central-1.amazonaws.com/t10k-labels-idx1-ubyte.gz)
 
----
-
 ## Evaluation Criteria
 
 ### Loss Function  
@@ -72,14 +69,11 @@ Negative Log-Likelihood Loss (NLLLoss) is used as the loss function during model
 
 <br>Note the `negative` sign in front `NLLLoss` formula (and in the `BCELoss` formula as well) hence negative in the name. The negative sign is put in front to make the average loss positive. Suppose we don't do this since the `log` of a number less than 1 is negative. In that case, we will have a negative overall average loss. To reduce the loss, we need to `maximize` the loss function instead of `minimizing,` which is a much easier task mathematically than `maximizing.`
 
-
 ### Performance Metric
-
 `accuracy` is used as the model's performance metric on the test-set 
 
 ![](assets/accuracy.png)
 
----
 ## Solution Approach
 - Training dataset of 60,000 images and labels along with testing dataset of 10,000 images and labels are downloaded from torchvision.
 - Training dataset is then further split into training (80% i.e. 48,000 samples) and validation (20% i.e. 12,000) samples sets
@@ -119,8 +113,6 @@ To improve prediction accuracy, we add a few more fully-connected layers with dr
 - It's possible to improve model performance and push it above 90% by further experimenting with the architecture and tuning hyperparameters. However, it'd be tough to get the accuracy in the range of 95-98% using a model just utilizing fully connected layers. This is because Fashion-MNIST is a more complex dataset compared to MNIST. For example, when images of 28x28 are flattened to make them a vector of 784 elements to feed to a fully connected layer, they lose `spatial` structural information; hence model's ability to learn the underlying structure is reduced.
 Instead of fully-connected layers, if we were to use `Convolution` layers that could consume 28x28 images directly preserving the `spatial` structural information, it'd be pretty easy to obtain accuracy above 95%.
 
-
----
 ## How To Use
 1. Ensure the below-listed packages are installed
     - `NumPy`
@@ -142,35 +134,12 @@ Instead of fully-connected layers, if we were to use `Convolution` layers that c
     print(pred_label)
 ```
 
----
 ## License
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 
-MIT License
+## Get in touch
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/sssingh)
+[![twitter](https://img.shields.io/badge/twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/_sssingh)
+[![website](https://img.shields.io/badge/website-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://datamatrix-ml.com/)
 
-Copyright (c) [2021] [Sunil S. Singh]
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the software, and to permit persons to whom the software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
----
-
-## Author Info
-
-- Twitter - [@_sssingh](https://twitter.com/_sssingh)
-- Linkedin - [Sunil S. Singh](https://linkedin.com/in/sssingh)
----
+[Back To The Top](#Fashion-MNIST-Classification-using-Neural-Network)
