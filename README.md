@@ -1,7 +1,7 @@
 # Fashion MNIST Classification using Neural Network 
 Classify apparel images in Fashion-MNIST dataset using custom built fully-connected neural network
 
-<img src="assets/fmnist_intro.png" width="800" height="400">
+<img src="https://github.com/sssingh/fashion-mnist-classification/blob/master/assets/fmnist_intro.png?raw=true" width="800" height="400">
 
 ## Features
 ⚡Multi Label Image Classification  
@@ -44,12 +44,12 @@ We'll build a neural network using PyTorch. Only `fully-connected` layers will b
 
 - Each image in the dataset is a 28x28 pixel grayscale image, a zoomed-in single image shown below...
 
-![](assets/fmnist_single_image.png)
+<img src="https://github.com/sssingh/fashion-mnist-classification/blob/master/assets/fmnist_single_image.png?raw=true">
 
 
 - Here are zoomed-out samples of other images from the training dataset with their respective labels...
 
-![](assets/fmnist_samples.png)
+<img src="https://github.com/sssingh/fashion-mnist-classification/blob/master/assets/fmnist_samples.png?raw=true">
 
 
 - We will use the in-built Fashion-MNIST dataset from PyTorch's `torchvision` package. The advantage of using the dataset this way is that we get a clean pre-processed dataset that pairs the image and respective label nicely, making our life easier when we iterate through the image samples while training and testing the model. Alternatively, the raw dataset can be downloaded from the original source. Like MNIST, the raw dataset comes as a set of 4 zip files containing training images, training image labels, testing images, and testing image labels in separate files... 
@@ -63,16 +63,16 @@ We'll build a neural network using PyTorch. Only `fully-connected` layers will b
 ### Loss Function  
 Negative Log-Likelihood Loss (NLLLoss) is used as the loss function during model training and validation 
 
-![](assets/logsoftmax.png)
+<img src="https://github.com/sssingh/fashion-mnist-classification/blob/master/assets/logsoftmax.png?raw=true">
 
-![](assets/nllloss.png)
+<img src="https://github.com/sssingh/fashion-mnist-classification/blob/master/assets/nllloss.png?raw=true">
 
 <br>Note the `negative` sign in front `NLLLoss` formula (and in the `BCELoss` formula as well) hence negative in the name. The negative sign is put in front to make the average loss positive. Suppose we don't do this since the `log` of a number less than 1 is negative. In that case, we will have a negative overall average loss. To reduce the loss, we need to `maximize` the loss function instead of `minimizing,` which is a much easier task mathematically than `maximizing.`
 
 ### Performance Metric
 `accuracy` is used as the model's performance metric on the test-set 
 
-![](assets/accuracy.png)
+<img src="https://github.com/sssingh/fashion-mnist-classification/blob/master/assets/accuracy.png?raw=true">
 
 ## Solution Approach
 - Training dataset of 60,000 images and labels along with testing dataset of 10,000 images and labels are downloaded from torchvision.
@@ -87,27 +87,27 @@ Negative Log-Likelihood Loss (NLLLoss) is used as the loss function during model
     - A dropout layer with a 25% probability
     - Output layer has 64 inputs and produces ten logits outputs Corresponding to each of the ten classes in the dataset). Logits are then passed through `LogSoftmax` activation to get `log-probability` for each class. 
 
-![](assets/fmnist_model1.png)
+<img src="https://github.com/sssingh/fashion-mnist-classification/blob/master/assets/fmnist_model1.png?raw=true">
     
 - Network is then trained for 25 epochs using the `NLLLoss` loss function and `Adam` optimizer with a learning rate of `0.003`.
 - We keep track of training loss and plot it; we observe training loss decreasing throughout, but validation loss does not improve further after 11-12 epochs...
 
-![](assets/fmnist_loss1.png)
+<img src="https://github.com/sssingh/fashion-mnist-classification/blob/master/assets/fmnist_loss1.png?raw=true">
 
 - We have a trained model; let's try classifying a single image from the test set. 
 
-![](assets/predict1.png)
+<img src="https://github.com/sssingh/fashion-mnist-classification/blob/master/assets/predict1.png?raw=true">
 
 We observe that the network can identify the image with a high degree of accuracy. This looks good; let's evaluate our trained network on a complete test set. We managed to get a prediction `accuracy` of `87.42%`, which is not bad given that our model is a simple neural net.
 
 To improve prediction accuracy, we add a few more fully-connected layers with dropouts. Modified model architecture is shown below...
 
-![](assets/fmnist_model2.png)
+<img =src"https://github.com/sssingh/fashion-mnist-classification/blob/master/assets/fmnist_model2.png?raw=true">
 
 - We then re-train the new model for 35 epochs using the `NLLLoss` loss function and `Adam` optimizer with a learning rate of `0.0007`. 
 - We keep track of training and validation losses and plot them. We observe that the modified model can produce lower validation loss compared to the previous model
 
-![](assets/fmnist_loss2.png)
+<img src="https://github.com/sssingh/fashion-mnist-classification/blob/master/https://github.com/sssingh/fashion-mnist classification/blob/master/assets/fmnist_loss2.png?raw=true">
 
 - We then evaluate our trained network to complete the test set. This time we managed to get a prediction `accuracy` of `88.65%`, which is more than a percent improvement over the previous model.
 - It's possible to improve model performance and push it above 90% by further experimenting with the architecture and tuning hyperparameters. However, it'd be tough to get the accuracy in the range of 95-98% using a model just utilizing fully connected layers. This is because Fashion-MNIST is a more complex dataset compared to MNIST. For example, when images of 28x28 are flattened to make them a vector of 784 elements to feed to a fully connected layer, they lose `spatial` structural information; hence model's ability to learn the underlying structure is reduced.
