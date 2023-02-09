@@ -102,7 +102,7 @@ We observe that the network can identify the image with a high degree of accurac
 
 To improve prediction accuracy, we add a few more fully-connected layers with dropouts. Modified model architecture is shown below...
 
-<img =src"https://github.com/sssingh/fashion-mnist-classification/blob/master/assets/fmnist_model2.png?raw=true">
+<img src="https://github.com/sssingh/fashion-mnist-classification/blob/master/assets/fmnist_model2.png?raw=true">
 
 - We then re-train the new model for 35 epochs using the `NLLLoss` loss function and `Adam` optimizer with a learning rate of `0.0007`. 
 - We keep track of training and validation losses and plot them. We observe that the modified model can produce lower validation loss compared to the previous model
